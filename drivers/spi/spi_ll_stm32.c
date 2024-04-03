@@ -1390,9 +1390,9 @@ static struct spi_stm32_data spi_stm32_dev_data_##id = {		\
 	SPI_CONTEXT_CS_GPIOS_INITIALIZE(DT_DRV_INST(id), ctx)		\
 };									\
 									\
-PM_DEVICE_DT_INST_DEFINE(index, spi_stm32_pm_action);			\
+PM_DEVICE_DT_INST_DEFINE(id, spi_stm32_pm_action);			\
 									\
-DEVICE_DT_INST_DEFINE(id, &spi_stm32_init, NULL,			\
+DEVICE_DT_INST_DEFINE(id, &spi_stm32_init, PM_DEVICE_DT_INST_GET(id),	\
 		    &spi_stm32_dev_data_##id, &spi_stm32_cfg_##id,	\
 		    POST_KERNEL, CONFIG_SPI_INIT_PRIORITY,		\
 		    &api_funcs);					\
